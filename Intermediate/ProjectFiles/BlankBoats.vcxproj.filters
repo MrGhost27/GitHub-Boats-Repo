@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\BlankBoats.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{DC135CF0-A01E-45BD-9179-00DF1EC6C0CC}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BlankBoats.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\BlankBoatsEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{5791C0EB-EFC2-471C-B69E-C490D3CBF53F}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\BlankBoats">
+      <UniqueIdentifier>{A0377502-A50A-4C1A-95E0-5A2AA1C308FD}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\BlankBoats\BlankBoats.Build.cs">
+      <Filter>Source\BlankBoats</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\BlankBoats\BlankBoats.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\BlankBoats.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BlankBoats\BlankBoatsGameModeBase.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\BlankBoatsGameModeBase.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

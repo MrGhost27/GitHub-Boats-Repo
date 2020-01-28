@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "BlankBoats",
+			"Path": "F:\\MyWork\\Unreal Projects\\BlankBoats\\Source\\BlankBoats.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "BlankBoatsEditor",
+			"Path": "F:\\MyWork\\Unreal Projects\\BlankBoats\\Source\\BlankBoatsEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
