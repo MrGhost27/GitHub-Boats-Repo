@@ -31,6 +31,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
 
+	UPROPERTY(EditAnywhere, Category = "Components")
+	AActor* OverheadCamera;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

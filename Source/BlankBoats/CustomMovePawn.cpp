@@ -5,6 +5,7 @@
 #include "Classes/Components/InputComponent.h"
 #include "Classes/GameFramework/FloatingPawnMovement.h"
 #include "Classes/Camera/CameraComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ACustomMovePawn::ACustomMovePawn()
@@ -20,13 +21,19 @@ ACustomMovePawn::ACustomMovePawn()
 	Camera->SetupAttachment(StaticMesh);
 
 	SetRootComponent(StaticMesh);
+
+
+	
 }
 
 // Called when the game starts or when spawned
 void ACustomMovePawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	// Setting Camera to Overview Camera
+	APlayerController* OurPlayerController = UGameplayStatics::GetPlayerController(this, 0);
+	//Smoothly transition to our actor on begin play.
+	OurPlayerController->SetViewTargetWithBlend(OverheadCamera, 2.f);
 }
 
 void ACustomMovePawn::MoveForward(float amount)
