@@ -21,6 +21,7 @@ protected:
 
 	void MoveForward(float amount);
 	void MoveRight(float amount);
+	void Dash();
 
 	class UFloatingPawnMovement* FloatingPawnMovement;
 

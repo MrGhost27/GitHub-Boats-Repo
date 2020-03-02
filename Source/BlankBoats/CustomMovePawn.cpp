@@ -39,6 +39,11 @@ void ACustomMovePawn::MoveRight(float amount)
 	FloatingPawnMovement->AddInputVector(GetActorRightVector() * amount);
 }
 
+void ACustomMovePawn::Dash()
+{
+	FloatingPawnMovement->Velocity = FloatingPawnMovement->Velocity.ForwardVector * 1000.0;
+}
+
 // Called every frame
 void ACustomMovePawn::Tick(float DeltaTime)
 {
@@ -53,5 +58,8 @@ void ACustomMovePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 	PlayerInputComponent->BindAxis("ForwardMoveAxis", this, &ACustomMovePawn::MoveForward);
 	PlayerInputComponent->BindAxis("RightMoveAxis", this, &ACustomMovePawn::MoveRight);
+
+	//action mappings
+	PlayerInputComponent->BindAction("Dash",IE_Pressed, this, &ACustomMovePawn::Dash);
 }
 
