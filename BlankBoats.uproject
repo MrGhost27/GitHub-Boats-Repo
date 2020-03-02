@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{0AA94F9F-4F6F-CEB8-63C9-84901A346DE1}",
+	"EngineAssociation": "{4A533272-4345-BADB-5BBF-4A8C0402311A}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "BlankBoats",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	]
 }

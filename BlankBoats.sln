@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.25807.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{C8A2F57A-4E3C-4BD4-8626-6FC31DB4B980}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{AC6E1443-F88E-4016-B06D-1610F8972629}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{0501D266-6F61-409D-9203-3BB5335F6940}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Games", "Games", "{97467CA1-8060-4D55-88CB-ADBE07C2A0CF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UE4", "Intermediate\ProjectFiles\UE4.vcxproj", "{D18C0C24-88D3-44C8-A80A-CDADABFDEC58}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlankBoats", "Intermediate\ProjectFiles\BlankBoats.vcxproj", "{ADB12B3D-4AD1-40C6-B318-C4E42B6ADC06}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visualizers", "Visualizers", "{DB7CFEEE-C730-4DAD-86C8-7A1F70AB9DD9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visualizers", "Visualizers", "{44CE7A56-F617-44C4-ABF5-3DD9B7DFE8F5}"
 	ProjectSection(SolutionItems) = preProject
-		C:\Program Files\Epic Games\UE_4.24\Engine\Extras\VisualStudioDebugging\UE4.natvis = C:\Program Files\Epic Games\UE_4.24\Engine\Extras\VisualStudioDebugging\UE4.natvis
+		..\..\..\..\Program Files\Epic Games\UE_4.24\Engine\Extras\VisualStudioDebugging\UE4.natvis = ..\..\..\..\Program Files\Epic Games\UE_4.24\Engine\Extras\VisualStudioDebugging\UE4.natvis
 	EndProjectSection
 EndProject
 Global
@@ -63,7 +63,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D18C0C24-88D3-44C8-A80A-CDADABFDEC58} = {C8A2F57A-4E3C-4BD4-8626-6FC31DB4B980}
-		{ADB12B3D-4AD1-40C6-B318-C4E42B6ADC06} = {0501D266-6F61-409D-9203-3BB5335F6940}
+		{D18C0C24-88D3-44C8-A80A-CDADABFDEC58} = {AC6E1443-F88E-4016-B06D-1610F8972629}
+		{ADB12B3D-4AD1-40C6-B318-C4E42B6ADC06} = {97467CA1-8060-4D55-88CB-ADBE07C2A0CF}
 	EndGlobalSection
 EndGlobal
