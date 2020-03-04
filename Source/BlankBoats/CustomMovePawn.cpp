@@ -6,6 +6,7 @@
 #include "Classes/GameFramework/FloatingPawnMovement.h"
 #include "Classes/Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/ArrowComponent.h"
 
 // Sets default values
 ACustomMovePawn::ACustomMovePawn()
@@ -22,8 +23,9 @@ ACustomMovePawn::ACustomMovePawn()
 
 	SetRootComponent(StaticMesh);
 
-
-	
+	Arrow = CreateDefaultSubobject<UArrowComponent>("Arrow");
+	Arrow->SetRelativeLocation(FVector(0.0, 0.0, 0.0));
+	Arrow->bHiddenInGame = false;
 }
 
 // Called when the game starts or when spawned

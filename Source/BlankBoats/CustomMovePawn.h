@@ -34,6 +34,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Components")
 	AActor* OverheadCamera;
 
+	UPROPERTY(EditAnywhere, Category = "Components")
+	class UArrowComponent* Arrow;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
