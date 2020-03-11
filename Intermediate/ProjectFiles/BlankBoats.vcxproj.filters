@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\BlankBoats.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{D10BF676-5877-4384-A6E1-3C56D23204F8}</UniqueIdentifier>
+      <UniqueIdentifier>{0DDB46B6-740A-4EF9-AFFB-9F9694FB1BFE}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\BlankBoats.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{CDC18739-1F0B-4744-A018-423503B2C01F}</UniqueIdentifier>
+      <UniqueIdentifier>{1115113F-51A0-4A01-B2F0-C324E334B9AC}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -29,7 +29,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\BlankBoats">
-      <UniqueIdentifier>{C5754DB2-1F4A-4107-A21F-B6D41733D5D6}</UniqueIdentifier>
+      <UniqueIdentifier>{11BF44CB-368E-464E-87E8-9778AA9BC9E3}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\BlankBoats\BlankBoats.Build.cs">
       <Filter>Source\BlankBoats</Filter>
@@ -46,20 +46,32 @@
     <ClInclude Include="..\..\Source\BlankBoats\BlankBoatsGameModeBase.h">
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\BlankBoats\CustomMovePawn.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\CustomMovePawn.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\BlankBoats\CustomMovePlayer.cpp">
       <Filter>Source\BlankBoats</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\BlankBoats\CustomMovePlayer.h">
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\BlankBoats\CustomMovePawn.h">
+    <ClCompile Include="..\..\Source\BlankBoats\EnemyCannon.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\EnemyCannon.h">
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\BlankBoats\CustomMovePawn.cpp">
+    <ClInclude Include="..\..\Source\BlankBoats\MyGameMode.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\BlankBoats\MyGameMode.cpp">
       <Filter>Source\BlankBoats</Filter>
     </ClCompile>
   </ItemGroup>
