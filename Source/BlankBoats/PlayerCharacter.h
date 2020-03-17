@@ -42,24 +42,58 @@ protected:
 	virtual void BeginPlay() override;
 
 	//functions
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void MoveForward(float value);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void MoveRight(float value);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void TurnAtRate(float value);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void LookAtRate(float value);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void Dash();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void Interact();
 
+	//getters
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	bool GetHasCannonball();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	float GetTurnRate();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	float GetLookRate();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	float GetDashForce();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	float GetWalkSpeed();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	float GetCarryingSpeed();
+
+	//setters
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetHasCannonball();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetTurnRate(float v);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetLookRate(float v);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetDashForce(float v);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetWalkSpeed(float v); 
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetCarryingSpeed(float v);
+
 	//variables
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vars")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float turnRate;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vars")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float lookRate;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vars")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float dashForce;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vars")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float walkSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vars")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float carryingSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Vars")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool hasCannonball;
 };

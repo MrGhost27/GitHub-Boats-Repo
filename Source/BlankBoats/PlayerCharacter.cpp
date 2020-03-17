@@ -32,7 +32,8 @@ APlayerCharacter::APlayerCharacter()
 
 	//Cannonball
 	Cannonball = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cannonball"));
-
+	Cannonball->SetupAttachment(RootComponent);
+	
 	//set values for variables
 	turnRate = 45.0f;
 	lookRate = 45.0f;
@@ -98,13 +99,77 @@ void APlayerCharacter::Interact()
 
 }
 
+bool APlayerCharacter::GetHasCannonball()
+{
+	return hasCannonball;
+}
+
+float APlayerCharacter::GetTurnRate()
+{
+	return turnRate;
+}
+
+float APlayerCharacter::GetLookRate()
+{
+	return lookRate;
+}
+
+float APlayerCharacter::GetDashForce()
+{
+	return dashForce;
+}
+
+float APlayerCharacter::GetWalkSpeed()
+{
+	return walkSpeed;
+}
+
+float APlayerCharacter::GetCarryingSpeed()
+{
+	return carryingSpeed;
+}
+
+void APlayerCharacter::SetHasCannonball()
+{
+	hasCannonball = !hasCannonball;
+}
+
+void APlayerCharacter::SetTurnRate(float v)
+{
+	turnRate = v;
+}
+
+void APlayerCharacter::SetLookRate(float v)
+{
+	lookRate = v;
+}
+
+void APlayerCharacter::SetDashForce(float v)
+{
+	dashForce = v;
+}
+
+void APlayerCharacter::SetWalkSpeed(float v)
+{
+	walkSpeed = v;
+}
+
+void APlayerCharacter::SetCarryingSpeed(float v)
+{
+	carryingSpeed = v;
+}
+
 // Called every frame
 void APlayerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	if (hasCannonball)
+	{
+		Cannonball->SetVisibility(true);
 		PlayerMovement->MaxWalkSpeed = carryingSpeed;
+	}
+		
 	else
 		PlayerMovement->MaxWalkSpeed = walkSpeed;
 
