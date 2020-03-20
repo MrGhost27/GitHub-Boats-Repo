@@ -9,6 +9,7 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UStaticMeshComponent;
+class UCapsuleComponent;
 class UCharacterMovementComponent;
 
 UCLASS()
@@ -31,6 +32,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Props")
 	UStaticMeshComponent* Cannonball;
+
+	UCapsuleComponent* CapsuleRef;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -53,7 +56,14 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void Dash();
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
-	void Interact();
+	void InteractPressed();
+	UFUNCTION(BlueprintNativeEvent)
+	void InteractWithStation();
+	void InteractWithStation_Implementation();
+	/*UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Overlap")
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Overlap")
+	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);*/
 
 	//getters
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
@@ -96,4 +106,6 @@ protected:
 	float carryingSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool hasCannonball;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	bool canInteract;
 };

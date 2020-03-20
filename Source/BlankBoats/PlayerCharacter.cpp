@@ -7,10 +7,12 @@
 #include "Camera/CameraComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/InputComponent.h"
-#include "Components/ArrowComponent.h"
 #include "GameFramework/Controller.h"
 #include "Math/Vector.h"
 #include "GameFramework/Actor.h"
+#include "InteractInterfaceBase.h"
+#include "Components/CapsuleComponent.h"
+#include "Engine.h"
 
 // Sets default values
 APlayerCharacter::APlayerCharacter()
@@ -42,13 +44,15 @@ APlayerCharacter::APlayerCharacter()
 	carryingSpeed = 100.0f;
 	hasCannonball = false;
 
+	//get reference to mesh
+	CapsuleRef = ACharacter::GetCapsuleComponent();
 }
 
 // Called when the game starts or when spawned
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	//CapsuleRef->OnComponentBeginOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapBegin);
 }
 
 void APlayerCharacter::MoveForward(float value)
@@ -94,10 +98,39 @@ void APlayerCharacter::Dash()
 	PlayerMovement->Velocity = (PlayerMovement->Velocity + forward) * dashForce;
 }
 
-void APlayerCharacter::Interact()
+void APlayerCharacter::InteractPressed()
 {
+	/*if (canInteract)
+	{
+		AActor* OtherActor;
+		IInteractInterfaceBase* Interface = Cast<IInteractInterfaceBase>(OtherActor);
 
+		if (Interface)
+		{
+			Interface->Execute_OnInteract(OtherActor,this);
+		}
+	}*/
+	//This needs to call whatever function, not be a function
+	InteractWithStation();
+	//hasCannonball = !hasCannonball;
 }
+//
+void APlayerCharacter::InteractWithStation_Implementation()
+{
+	if(GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));
+	//hasCannonball = !hasCannonball;
+}
+
+//void APlayerCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+//{
+//	canInteract = true;
+//}
+//
+//void APlayerCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
+//{
+//	canInteract = false;
+//}
 
 bool APlayerCharacter::GetHasCannonball()
 {
@@ -169,9 +202,11 @@ void APlayerCharacter::Tick(float DeltaTime)
 		Cannonball->SetVisibility(true);
 		PlayerMovement->MaxWalkSpeed = carryingSpeed;
 	}
-		
 	else
+	{
+		Cannonball->SetVisibility(false);
 		PlayerMovement->MaxWalkSpeed = walkSpeed;
+	}
 
 }
 
@@ -187,7 +222,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	//Action bindings
 	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &APlayerCharacter::Dash);
 	//PlayerInputComponent->BindAction("Dash", IE_Released, this, &APlayerCharacter::Dash);
-	PlayerInputComponent->BindAction("Interact", IE_Pressed, this, &APlayerCharacter::Interact);
+	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &APlayerCharacter::InteractPressed);
 	//PlayerInputComponent->BindAction("Interact", IE_Released, this, &APlayerCharacter::Interact);
 }
 

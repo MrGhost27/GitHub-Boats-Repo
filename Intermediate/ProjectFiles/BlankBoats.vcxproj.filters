@@ -65,4 +65,20 @@
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\BlankBoats\InteractInterfaceBase.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\BlankBoats\InteractableBase.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\BlankBoats\InteractInterfaceBase.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BlankBoats\InteractableBase.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
