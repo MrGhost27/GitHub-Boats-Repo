@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "InteractInterfaceBase.h"
+#include "PlayerCharacter.h"
 #include "InteractableBase.generated.h"
 
 UCLASS()
@@ -20,12 +21,16 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	//variables
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "StationVariables")
+	bool inStation;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
-	void OnInteract(AActor* Caller);
-	virtual void OnInteract_Implementation(AActor* Caller);
+	void OnInteract(APlayerCharacter* Player);
+	virtual void OnInteract_Implementation(APlayerCharacter* Player);
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
 	void OnEnter();
 	virtual void OnEnter_Implementation();

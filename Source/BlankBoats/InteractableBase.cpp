@@ -9,7 +9,7 @@ AInteractableBase::AInteractableBase()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	inStation = false;
 }
 
 // Called when the game starts or when spawned
@@ -31,19 +31,22 @@ void AInteractableBase::Tick(float DeltaTime)
 //	/*GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));*/
 //}
 //
-void AInteractableBase::OnInteract_Implementation(AActor* Caller)
+void AInteractableBase::OnInteract_Implementation(APlayerCharacter* Player)
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));
-	Destroy();
+	
+	
 }
 
 void AInteractableBase::OnEnter_Implementation()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("ENTERED"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("ENTERED"));
+	inStation = true;
 }
 
 void AInteractableBase::OnExit_Implementation()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("EXITED"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("EXITED"));
+	inStation = false;
 }
 

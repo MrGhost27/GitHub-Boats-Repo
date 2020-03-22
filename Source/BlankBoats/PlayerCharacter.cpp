@@ -43,7 +43,7 @@ APlayerCharacter::APlayerCharacter()
 	walkSpeed = 600.0f;
 	carryingSpeed = 100.0f;
 	hasCannonball = false;
-
+	canInteract = false;
 	//get reference to mesh
 	CapsuleRef = ACharacter::GetCapsuleComponent();
 }
@@ -111,15 +111,14 @@ void APlayerCharacter::InteractPressed()
 		}
 	}*/
 	//This needs to call whatever function, not be a function
-	InteractWithStation();
-	//hasCannonball = !hasCannonball;
+	if(canInteract)
+		InteractWithStation();
 }
 //
 void APlayerCharacter::InteractWithStation_Implementation()
 {
 	if(GEngine)
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));
-	//hasCannonball = !hasCannonball;
 }
 
 //void APlayerCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
@@ -162,6 +161,11 @@ float APlayerCharacter::GetCarryingSpeed()
 	return carryingSpeed;
 }
 
+bool APlayerCharacter::GetCanInteract()
+{
+	return canInteract;
+}
+
 void APlayerCharacter::SetHasCannonball()
 {
 	hasCannonball = !hasCannonball;
@@ -190,6 +194,11 @@ void APlayerCharacter::SetWalkSpeed(float v)
 void APlayerCharacter::SetCarryingSpeed(float v)
 {
 	carryingSpeed = v;
+}
+
+void APlayerCharacter::SetCanInteract()
+{
+	canInteract = !canInteract;
 }
 
 // Called every frame

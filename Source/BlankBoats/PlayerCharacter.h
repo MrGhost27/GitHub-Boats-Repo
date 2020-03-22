@@ -78,6 +78,8 @@ protected:
 	float GetWalkSpeed();
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	float GetCarryingSpeed();
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	bool GetCanInteract();
 
 	//setters
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
@@ -92,6 +94,8 @@ protected:
 	void SetWalkSpeed(float v); 
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void SetCarryingSpeed(float v);
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SetCanInteract();
 
 	//variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
