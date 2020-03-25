@@ -33,8 +33,8 @@ APlayerCharacter::APlayerCharacter()
 	Camera->SetupAttachment(RootComponent);
 
 	//Cannonball
-	Cannonball = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cannonball"));
-	Cannonball->SetupAttachment(RootComponent);
+	//Cannonball = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cannonball"));
+	//Cannonball->SetupAttachment(RootComponent);
 	
 	//set values for variables
 	turnRate = 45.0f;
@@ -208,12 +208,12 @@ void APlayerCharacter::Tick(float DeltaTime)
 
 	if (hasCannonball)
 	{
-		Cannonball->SetVisibility(true);
+		//Cannonball->SetVisibility(true);
 		PlayerMovement->MaxWalkSpeed = carryingSpeed;
 	}
 	else
 	{
-		Cannonball->SetVisibility(false);
+		//Cannonball->SetVisibility(false);
 		PlayerMovement->MaxWalkSpeed = walkSpeed;
 	}
 

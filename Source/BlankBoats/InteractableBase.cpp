@@ -31,7 +31,7 @@ void AInteractableBase::Tick(float DeltaTime)
 //	/*GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));*/
 //}
 //
-void AInteractableBase::OnInteract_Implementation(APlayerCharacter* Player)
+void AInteractableBase::OnInteract_Implementation(AActor* Caller)//APlayerCharacter* Player
 {
 	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));
 	

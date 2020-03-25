@@ -29,8 +29,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
-	void OnInteract(APlayerCharacter* Player);
-	virtual void OnInteract_Implementation(APlayerCharacter* Player);
+	void OnInteract(AActor* Caller); //APlayerCharacter* Player
+	virtual void OnInteract_Implementation(AActor* Caller); //APlayerCharacter* Player
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
 	void OnEnter();
 	virtual void OnEnter_Implementation();

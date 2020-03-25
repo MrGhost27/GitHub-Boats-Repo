@@ -30,8 +30,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
 	UCameraComponent* Camera;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Props")
-	UStaticMeshComponent* Cannonball;
+	/*UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Props")
+	UStaticMeshComponent* Cannonball;*/
 
 	UCapsuleComponent* CapsuleRef;
 	
