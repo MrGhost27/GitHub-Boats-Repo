@@ -20,19 +20,9 @@ class BLANKBOATS_API APlayerCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	APlayerCharacter();
-	//character movement reference
+
+	//References
 	UCharacterMovementComponent* PlayerMovement;
-
-	//components
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
-	USpringArmComponent* SpringArm;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Camera")
-	UCameraComponent* Camera;
-
-	/*UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Props")
-	UStaticMeshComponent* Cannonball;*/
-
 	UCapsuleComponent* CapsuleRef;
 	
 	// Called every frame

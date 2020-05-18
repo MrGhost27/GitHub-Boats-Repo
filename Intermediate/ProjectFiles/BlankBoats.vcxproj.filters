@@ -72,12 +72,18 @@
     <ClInclude Include="..\..\Source\BlankBoats\InteractableBase.h">
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\BlankBoats\DefaultPlayer.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\BlankBoats\InteractInterfaceBase.cpp">
       <Filter>Source\BlankBoats</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\BlankBoats\InteractableBase.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\BlankBoats\DefaultPlayer.cpp">
       <Filter>Source\BlankBoats</Filter>
     </ClCompile>
   </ItemGroup>

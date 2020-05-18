@@ -17,26 +17,21 @@
 // Sets default values
 APlayerCharacter::APlayerCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//Set up References
+	CapsuleRef = ACharacter::GetCapsuleComponent(); //Mesh
+	PlayerMovement = ACharacter::GetCharacterMovement(); //Player Movement Controller
+
+	//Set up Rotation
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
+	PlayerMovement->bOrientRotationToMovement = true; // Character moves in the direction of input...	
+	PlayerMovement->RotationRate = FRotator(0.0f, 540.0f, 0.0f); // ...at this rotation rate
+
+ 	// Call Tick() Every Frame.
 	PrimaryActorTick.bCanEverTick = true;
-
-	//movement setup
-	//PlayerMovement = CreateDefaultSubobject<UCharacterMovementComponent>(TEXT("PlayerMovement"));
-	PlayerMovement = ACharacter::GetCharacterMovement();
 	
-	//spring arm setup
-	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArm->SetupAttachment(RootComponent);
-
-	//camera set up
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	Camera->SetupAttachment(RootComponent);
-
-	//Cannonball
-	//Cannonball = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cannonball"));
-	//Cannonball->SetupAttachment(RootComponent);
-	
-	//set values for variables
+	//Set Variables
 	turnRate = 45.0f;
 	lookRate = 45.0f;
 	dashForce = 5000.0f;
@@ -44,8 +39,6 @@ APlayerCharacter::APlayerCharacter()
 	carryingSpeed = 100.0f;
 	hasCannonball = false;
 	canInteract = false;
-	//get reference to mesh
-	CapsuleRef = ACharacter::GetCapsuleComponent();
 }
 
 // Called when the game starts or when spawned

@@ -283,9 +283,11 @@
     <ClInclude Include="..\..\Source\BlankBoats\CustomMovePawn.h" />
     <ClCompile Include="..\..\Source\BlankBoats\CustomMovePlayer.cpp" />
     <ClInclude Include="..\..\Source\BlankBoats\CustomMovePlayer.h" />
+    <ClCompile Include="..\..\Source\BlankBoats\DefaultPlayer.cpp" />
     <ClCompile Include="..\..\Source\BlankBoats\InteractableBase.cpp" />
     <ClCompile Include="..\..\Source\BlankBoats\InteractInterfaceBase.cpp" />
     <ClCompile Include="..\..\Source\BlankBoats\PlayerCharacter.cpp" />
+    <ClInclude Include="..\..\Source\BlankBoats\DefaultPlayer.h" />
     <ClInclude Include="..\..\Source\BlankBoats\InteractableBase.h" />
     <ClInclude Include="..\..\Source\BlankBoats\InteractInterfaceBase.h" />
     <ClInclude Include="..\..\Source\BlankBoats\PlayerCharacter.h" />
