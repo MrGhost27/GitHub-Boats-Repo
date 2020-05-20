@@ -35,8 +35,8 @@ APlayerCharacter::APlayerCharacter()
 	turnRate = 45.0f;
 	lookRate = 45.0f;
 	dashForce = 5000.0f;
-	walkSpeed = 600.0f;
-	carryingSpeed = 100.0f;
+	walkSpeed = 3000.0f;
+	carryingSpeed = 500.0f;
 	hasCannonball = false;
 	canInteract = false;
 }
