@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\BlankBoats.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{BFC388B9-4A0A-4043-98B6-F9EDDC7D04EE}</UniqueIdentifier>
+      <UniqueIdentifier>{0DA7BECB-CB50-4F12-BAE9-A0BA8B01E3A7}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\BlankBoats.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitignore" />
     <None Include="..\..\README.md" />
     <Filter Include="Config">
-      <UniqueIdentifier>{4978E35E-2646-4F8C-8B25-54DE6D888EF0}</UniqueIdentifier>
+      <UniqueIdentifier>{DF753AD2-2E5D-4456-9AA4-B85EC7B7F1F7}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -29,7 +29,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\BlankBoats">
-      <UniqueIdentifier>{6C8B6376-4D1B-4AD3-90C8-D11706A7C0B6}</UniqueIdentifier>
+      <UniqueIdentifier>{AF7DE203-A281-4DAF-84A4-BA765F58189F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\BlankBoats\BlankBoats.Build.cs">
       <Filter>Source\BlankBoats</Filter>
@@ -58,33 +58,29 @@
     <ClInclude Include="..\..\Source\BlankBoats\CustomMovePlayer.h">
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\BlankBoats\DefaultPlayer.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\DefaultPlayer.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BlankBoats\InteractableBase.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\InteractableBase.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\BlankBoats\InteractInterfaceBase.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\BlankBoats\InteractInterfaceBase.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\BlankBoats\PlayerCharacter.cpp">
       <Filter>Source\BlankBoats</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\BlankBoats\PlayerCharacter.h">
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\BlankBoats\InteractInterfaceBase.h">
-      <Filter>Source\BlankBoats</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\BlankBoats\InteractableBase.h">
-      <Filter>Source\BlankBoats</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\BlankBoats\DefaultPlayer.h">
-      <Filter>Source\BlankBoats</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\BlankBoats\InteractInterfaceBase.cpp">
-      <Filter>Source\BlankBoats</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BlankBoats\InteractableBase.cpp">
-      <Filter>Source\BlankBoats</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BlankBoats\DefaultPlayer.cpp">
-      <Filter>Source\BlankBoats</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
