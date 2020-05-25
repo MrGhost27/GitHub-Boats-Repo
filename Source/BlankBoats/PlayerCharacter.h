@@ -24,6 +24,7 @@ public:
 	//References
 	UCharacterMovementComponent* PlayerMovement;
 	UCapsuleComponent* CapsuleRef;
+	UStaticMeshComponent* MeshRef;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -34,7 +35,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	//functions
+	//General Functions
+
+
+	//Axis Functions
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void MoveForward(float value);
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
@@ -43,6 +47,10 @@ protected:
 	void TurnAtRate(float value);
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void LookAtRate(float value);
+
+	//Action Functions
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+	void SpawnPressed();
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
 	void Dash();
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
@@ -102,4 +110,8 @@ protected:
 	bool hasCannonball;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool canInteract;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	bool spawned;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	bool playerNo;
 };
