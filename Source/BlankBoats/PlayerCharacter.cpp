@@ -18,7 +18,7 @@
 APlayerCharacter::APlayerCharacter()
 {
 	//Set up References
-	CapsuleRef = ACharacter::GetCapsuleComponent(); //Mesh
+	CapsuleRef = ACharacter::GetCapsuleComponent(); //Capsule
 	PlayerMovement = ACharacter::GetCharacterMovement(); //Player Movement Controller
 
 	//Set up Rotation
@@ -39,14 +39,20 @@ APlayerCharacter::APlayerCharacter()
 	carryingSpeed = 500.0f;
 	hasCannonball = false;
 	canInteract = false;
+	spawned = false;
 }
 
 // Called when the game starts or when spawned
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	this->SetActorHiddenInGame(true);
 	//CapsuleRef->OnComponentBeginOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapBegin);
 }
+
+//------------ Functions ----------------
+
+//--------- Axis Functions --------------
 
 void APlayerCharacter::MoveForward(float value)
 {
@@ -82,6 +88,26 @@ void APlayerCharacter::TurnAtRate(float value)
 void APlayerCharacter::LookAtRate(float value)
 {
 	AddControllerPitchInput(value * lookRate * GetWorld()->GetDeltaSeconds());
+}
+
+//------------ Action Functions ---------------
+
+void APlayerCharacter::SpawnPressed()
+{
+	if (!spawned) {
+		FString sPlayerNo = FString::FromInt(playerNo);
+		FName nPlayerNo = FName(*sPlayerNo);
+		TArray<AActor*> playerStarts;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
+
+		for (AActor* playerStart : playerStarts) {
+			if (playerStart->ActorHasTag(nPlayerNo)) {
+				this->SetActorLocation(playerStart->GetActorLocation());
+				this->SetActorHiddenInGame(false);
+				spawned = true;
+			}
+		}
+	}
 }
 
 void APlayerCharacter::Dash()
@@ -222,6 +248,7 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis("Turn",this,&APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("Look",this, &APawn::AddControllerPitchInput);
 	//Action bindings
+	PlayerInputComponent->BindAction("Spawn", IE_Pressed, this, &APlayerCharacter::SpawnPressed);
 	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &APlayerCharacter::Dash);
 	//PlayerInputComponent->BindAction("Dash", IE_Released, this, &APlayerCharacter::Dash);
 	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &APlayerCharacter::InteractPressed);
