@@ -46,8 +46,7 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	this->SetActorHiddenInGame(true);
-	//CapsuleRef->OnComponentBeginOverlap.AddDynamic(this, &APlayerCharacter::OnOverlapBegin);
+	this->SetActorHiddenInGame(true); //Make Player Invisible
 }
 
 //------------ Functions ----------------
@@ -94,17 +93,20 @@ void APlayerCharacter::LookAtRate(float value)
 
 void APlayerCharacter::SpawnPressed()
 {
-	if (!spawned) {
+	if (!spawned) { //Check PLayer Isn't Already Spawned
+		//Format PlayerNo
 		FString sPlayerNo = FString::FromInt(playerNo);
 		FName nPlayerNo = FName(*sPlayerNo);
+
+		//Get all playerStarts
 		TArray<AActor*> playerStarts;
 		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
 
-		for (AActor* playerStart : playerStarts) {
-			if (playerStart->ActorHasTag(nPlayerNo)) {
-				this->SetActorLocation(playerStart->GetActorLocation());
-				this->SetActorHiddenInGame(false);
-				spawned = true;
+		for (AActor* playerStart : playerStarts) { //Check all PlayerStarts
+			if (playerStart->ActorHasTag(nPlayerNo)) { //Find PlayerStart Matching Current Player
+				this->SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
+				this->SetActorHiddenInGame(false); //Make Player Visible
+				spawned = true; //Set Player as Spawned
 			}
 		}
 	}
