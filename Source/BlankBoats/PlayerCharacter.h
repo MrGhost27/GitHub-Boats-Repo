@@ -106,12 +106,14 @@ protected:
 	float walkSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float carryingSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	int playerNo;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool hasCannonball;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool canInteract;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool spawned;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
-	bool playerNo;
 };
