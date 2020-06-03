@@ -110,6 +110,19 @@ void APlayerCharacter::SpawnPressed()
 			}
 		}
 	}
+	else {
+		//Get all playerStarts
+		TArray<AActor*> playerStarts;
+		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
+
+		for (AActor* playerStart : playerStarts) { //Check all PlayerStarts
+			if (playerStart->ActorHasTag(FName("preSpawn"))) { //Find PlayerStart Matching Current Player
+				this->SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
+				this->SetActorHiddenInGame(true); //Make Player Visible
+				spawned = false; //Set Player as Spawned
+			}
+		}
+	}
 }
 
 void APlayerCharacter::Dash()
