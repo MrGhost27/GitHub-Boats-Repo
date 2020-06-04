@@ -2,6 +2,7 @@
 
 
 #include "PlayerCharacter.h"
+#include "cppStartSquare.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
@@ -104,8 +105,8 @@ void APlayerCharacter::SpawnPressed()
 
 		for (AActor* playerStart : playerStarts) { //Check all PlayerStarts
 			if (playerStart->ActorHasTag(nPlayerNo)) { //Find PlayerStart Matching Current Player
-				this->SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
-				this->SetActorHiddenInGame(false); //Make Player Visible
+				SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
+				SetActorHiddenInGame(false); //Make Player Visible
 				spawned = true; //Set Player as Spawned
 			}
 		}
@@ -117,8 +118,8 @@ void APlayerCharacter::SpawnPressed()
 
 		for (AActor* playerStart : playerStarts) { //Check all PlayerStarts
 			if (playerStart->ActorHasTag(FName("preSpawn"))) { //Find PlayerStart Matching Current Player
-				this->SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
-				this->SetActorHiddenInGame(true); //Make Player Visible
+				SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
+				SetActorHiddenInGame(true); //Make Player Visible
 				spawned = false; //Set Player as Spawned
 			}
 		}
