@@ -83,4 +83,14 @@
       <Filter>Source\BlankBoats</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\BlankBoats\cppStartSquare.h">
+      <Filter>Source\BlankBoats</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\BlankBoats\cppStartSquare.cpp">
+      <Filter>Source\BlankBoats</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
