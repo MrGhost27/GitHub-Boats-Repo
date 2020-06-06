@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "cppStartSquare.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
@@ -59,10 +60,8 @@ protected:
 	UFUNCTION(BlueprintNativeEvent)
 	void InteractWithStation();
 	void InteractWithStation_Implementation();
-	/*UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category = "Overlap")
-	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Overlap")
-	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);*/
+
+	//Event Functions
 
 	//getters
 	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
@@ -107,9 +106,13 @@ protected:
 	float walkSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	float carryingSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	float objectLocation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	float pickUpDistance;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
-	int playerNo;
+	int32 playerNo;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool hasCannonball;
@@ -117,4 +120,13 @@ protected:
 	bool canInteract;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
 	bool spawned;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	bool physicsHandleActive;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	bool isHeld;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	TArray<AActor*> playerStarts;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerVariables")
+	AcppStartSquare* startSquare;
 };

@@ -2,15 +2,13 @@
 
 
 #include "cppStartSquare.h"
+#include "PlayerCharacter.h"
 
 // Sets default values
 AcppStartSquare::AcppStartSquare()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	//Set References
-	textRender = AActor::FindComponentByClass<UTextRenderComponent>();
 
 	//Set Variables
 	overlappingPlayers = 0;
@@ -25,7 +23,9 @@ AcppStartSquare::AcppStartSquare()
 void AcppStartSquare::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	//Set References
+	textRender = AActor::FindComponentByClass<UTextRenderComponent>();
 }
 
 // Called every frame

@@ -2,7 +2,6 @@
 
 
 #include "PlayerCharacter.h"
-#include "cppStartSquare.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
@@ -22,6 +21,9 @@ APlayerCharacter::APlayerCharacter()
 	CapsuleRef = ACharacter::GetCapsuleComponent(); //Capsule
 	PlayerMovement = ACharacter::GetCharacterMovement(); //Player Movement Controller
 
+	//Get all playerStarts
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
+
 	//Set up Rotation
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -38,16 +40,53 @@ APlayerCharacter::APlayerCharacter()
 	dashForce = 5000.0f;
 	walkSpeed = 3000.0f;
 	carryingSpeed = 500.0f;
+	pickUpDistance = 1000.0f;
 	hasCannonball = false;
 	canInteract = false;
 	spawned = false;
 }
 
+// ------------ Core Functions --------------------
+
 // Called when the game starts or when spawned
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	this->SetActorHiddenInGame(true); //Make Player Invisible
+	SetActorHiddenInGame(true); //Make Player Invisible
+
+}
+
+// Called every frame
+void APlayerCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (hasCannonball)
+	{
+		//Cannonball->SetVisibility(true);
+		PlayerMovement->MaxWalkSpeed = carryingSpeed;
+	}
+	else
+	{
+		//Cannonball->SetVisibility(false);
+		PlayerMovement->MaxWalkSpeed = walkSpeed;
+	}
+
+}
+
+// Called to bind functionality to input
+void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	//axis bindings
+	PlayerInputComponent->BindAxis("ForwardMoveAxis", this, &APlayerCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("RightMoveAxis", this, &APlayerCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("Look", this, &APawn::AddControllerPitchInput);
+	//Action bindings
+	PlayerInputComponent->BindAction("Spawn", IE_Pressed, this, &APlayerCharacter::SpawnPressed);
+	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &APlayerCharacter::Dash);
+	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &APlayerCharacter::InteractPressed);
 }
 
 //------------ Functions ----------------
@@ -95,14 +134,10 @@ void APlayerCharacter::LookAtRate(float value)
 void APlayerCharacter::SpawnPressed()
 {
 	if (!spawned) { //Check PLayer Isn't Already Spawned
+		startSquare->SetSpawnedPlayers(1); //Increment Start Square's Spawned Players Variable
 		//Format PlayerNo
 		FString sPlayerNo = FString::FromInt(playerNo);
 		FName nPlayerNo = FName(*sPlayerNo);
-
-		//Get all playerStarts
-		TArray<AActor*> playerStarts;
-		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
-
 		for (AActor* playerStart : playerStarts) { //Check all PlayerStarts
 			if (playerStart->ActorHasTag(nPlayerNo)) { //Find PlayerStart Matching Current Player
 				SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
@@ -112,10 +147,7 @@ void APlayerCharacter::SpawnPressed()
 		}
 	}
 	else {
-		//Get all playerStarts
-		TArray<AActor*> playerStarts;
-		UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
-
+		startSquare->SetSpawnedPlayers(-1); //Decrement Start Square's Spawned Players Variable
 		for (AActor* playerStart : playerStarts) { //Check all PlayerStarts
 			if (playerStart->ActorHasTag(FName("preSpawn"))) { //Find PlayerStart Matching Current Player
 				SetActorLocation(playerStart->GetActorLocation()); //Move Player to SpawnPoint
@@ -156,15 +188,9 @@ void APlayerCharacter::InteractWithStation_Implementation()
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("INTERACTED"));
 }
 
-//void APlayerCharacter::OnOverlapBegin(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
-//{
-//	canInteract = true;
-//}
-//
-//void APlayerCharacter::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
-//{
-//	canInteract = false;
-//}
+//-------- Event Functions --------------
+
+//-------- Getter Functions --------------
 
 bool APlayerCharacter::GetHasCannonball()
 {
@@ -201,6 +227,8 @@ bool APlayerCharacter::GetCanInteract()
 	return canInteract;
 }
 
+//-------- Setter Functions ------------
+
 void APlayerCharacter::SetHasCannonball()
 {
 	hasCannonball = !hasCannonball;
@@ -235,39 +263,3 @@ void APlayerCharacter::SetCanInteract()
 {
 	canInteract = !canInteract;
 }
-
-// Called every frame
-void APlayerCharacter::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	if (hasCannonball)
-	{
-		//Cannonball->SetVisibility(true);
-		PlayerMovement->MaxWalkSpeed = carryingSpeed;
-	}
-	else
-	{
-		//Cannonball->SetVisibility(false);
-		PlayerMovement->MaxWalkSpeed = walkSpeed;
-	}
-
-}
-
-// Called to bind functionality to input
-void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	//axis bindings
-	PlayerInputComponent->BindAxis("ForwardMoveAxis",this,&APlayerCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("RightMoveAxis",this,&APlayerCharacter::MoveRight);
-	PlayerInputComponent->BindAxis("Turn",this,&APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("Look",this, &APawn::AddControllerPitchInput);
-	//Action bindings
-	PlayerInputComponent->BindAction("Spawn", IE_Pressed, this, &APlayerCharacter::SpawnPressed);
-	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &APlayerCharacter::Dash);
-	//PlayerInputComponent->BindAction("Dash", IE_Released, this, &APlayerCharacter::Dash);
-	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &APlayerCharacter::InteractPressed);
-	//PlayerInputComponent->BindAction("Interact", IE_Released, this, &APlayerCharacter::Interact);
-}
-

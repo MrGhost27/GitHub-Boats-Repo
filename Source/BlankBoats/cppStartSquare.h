@@ -32,15 +32,15 @@ protected:
 
 	//Variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
-	int overlappingPlayers;
+	int32 overlappingPlayers;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
-	int spawnedPlayers;
+	int32 spawnedPlayers;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
-	int enemiesToSpawn;
+	int32 enemiesToSpawn;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
-	int enemiesSpawned;
+	int32 enemiesSpawned;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
-	int timer;
+	int32 timer;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
 	FText text;
@@ -49,4 +49,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//Setters
+	UFUNCTION(BlueprintCallable, Category = "PlayerFunctions")
+		void SetSpawnedPlayers(int32 value) { spawnedPlayers += value; }
 };
