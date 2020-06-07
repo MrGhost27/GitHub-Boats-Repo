@@ -26,6 +26,7 @@ void AcppStartSquare::BeginPlay()
 
 	//Set References
 	textRender = AActor::FindComponentByClass<UTextRenderComponent>();
+	startPos = GetActorLocation();
 }
 
 // Called every frame
@@ -52,8 +53,9 @@ bool AcppStartSquare::UpdateTimer() {
 	}
 
 	if (timer > 500) { //If timer is over 500
+		timer = 0;
 		SetActorHiddenInGame(true); //Hide start square
-		SetActorLocation(FVector(GetActorLocation().X, -1, GetActorLocation().Z)); //Move Player to SpawnPoint
+		SetActorLocation(FVector(GetActorLocation().X, GetActorLocation().Y, -1)); //Move Square out of the way
 		return true;
 	}
 	else {
@@ -61,8 +63,7 @@ bool AcppStartSquare::UpdateTimer() {
 	}
 }
 
-//void AcppStartSquare::SpawnEnemies() {
-//	//Get all Enemy Spawners
-//	TArray<AActor*> playerStarts;
-//	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerStart::StaticClass(), playerStarts);
-//}
+void AcppStartSquare::ResetGame() {
+	SetActorHiddenInGame(false); //Show start square
+	SetActorLocation(startPos); //Return Square
+}

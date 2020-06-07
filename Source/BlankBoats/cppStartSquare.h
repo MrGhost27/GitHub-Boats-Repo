@@ -27,8 +27,8 @@ protected:
 	//Functions
 	UFUNCTION(BlueprintCallable, Category = "SSFunctions")
 	bool UpdateTimer();
-	//UFUNCTION(BlueprintCallable, Category = "SSFunctions")
-	//void SpawnEnemies();
+	UFUNCTION(BlueprintCallable, Category = "SSFunctions")
+	void ResetGame();
 
 	//Variables
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
@@ -44,6 +44,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
 	FText text;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SSVariables")
+	FVector startPos;
 	   
 public:	
 	// Called every frame
