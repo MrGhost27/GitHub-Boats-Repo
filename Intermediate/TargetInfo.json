@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "BlankBoats",
-			"Path": "E:\\Uni\\Unreal\\GitHub-Boats-Repo\\Source\\BlankBoats.Target.cs",
+			"Path": "C:\\Users\\Matt\\Desktop\\Unreal Projects\\GitHub-Boats-Repo\\Source\\BlankBoats.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "BlankBoatsEditor",
-			"Path": "E:\\Uni\\Unreal\\GitHub-Boats-Repo\\Source\\BlankBoatsEditor.Target.cs",
+			"Path": "C:\\Users\\Matt\\Desktop\\Unreal Projects\\GitHub-Boats-Repo\\Source\\BlankBoatsEditor.Target.cs",
 			"Type": "Editor"
 		}
 	]
