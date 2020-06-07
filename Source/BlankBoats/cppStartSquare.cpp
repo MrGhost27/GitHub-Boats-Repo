@@ -53,6 +53,7 @@ bool AcppStartSquare::UpdateTimer() {
 
 	if (timer > 500) { //If timer is over 500
 		SetActorHiddenInGame(true); //Hide start square
+		SetActorLocation(FVector(GetActorLocation().X, -1, GetActorLocation().Z)); //Move Player to SpawnPoint
 		return true;
 	}
 	else {
